@@ -1,0 +1,453 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BC89413613FAF6E2001E4306 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC89413513FAF6E2001E4306 /* Cocoa.framework */; };
+		BC89414013FAF6E2001E4306 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC89413E13FAF6E2001E4306 /* InfoPlist.strings */; };
+		BC89414813FAF6E2001E4306 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC89413513FAF6E2001E4306 /* Cocoa.framework */; };
+		BC89414B13FAF6E2001E4306 /* PhotoshopFileAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC89413213FAF6E2001E4306 /* PhotoshopFileAccess.framework */; };
+		BC89415113FAF6E2001E4306 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC89414F13FAF6E2001E4306 /* InfoPlist.strings */; };
+		BC89415413FAF6E2001E4306 /* PhotoshopFileAccessTests.h in Resources */ = {isa = PBXBuildFile; fileRef = BC89415313FAF6E2001E4306 /* PhotoshopFileAccessTests.h */; };
+		BC89415613FAF6E2001E4306 /* PhotoshopFileAccessTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC89415513FAF6E2001E4306 /* PhotoshopFileAccessTests.m */; };
+		BC89416013FAF70C001E4306 /* SoSharedLibDefs.h in Headers */ = {isa = PBXBuildFile; fileRef = BC89415F13FAF70C001E4306 /* SoSharedLibDefs.h */; };
+		BC89416313FAF732001E4306 /* PhotoshopFileAccess.h in Headers */ = {isa = PBXBuildFile; fileRef = BC89416113FAF732001E4306 /* PhotoshopFileAccess.h */; };
+		BC89416413FAF732001E4306 /* PhotoshopFileAccess.mm in Sources */ = {isa = PBXBuildFile; fileRef = BC89416213FAF732001E4306 /* PhotoshopFileAccess.mm */; };
+		BC89416713FAFC3B001E4306 /* MakeBody.jsx in Resources */ = {isa = PBXBuildFile; fileRef = BC89416613FAFC3B001E4306 /* MakeBody.jsx */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BC89414913FAF6E2001E4306 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC89412813FAF6E2001E4306 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BC89413113FAF6E2001E4306;
+			remoteInfo = PhotoshopFileAccess;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BC89413213FAF6E2001E4306 /* PhotoshopFileAccess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PhotoshopFileAccess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC89413513FAF6E2001E4306 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		BC89413813FAF6E2001E4306 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		BC89413913FAF6E2001E4306 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		BC89413A13FAF6E2001E4306 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BC89413D13FAF6E2001E4306 /* PhotoshopFileAccess-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PhotoshopFileAccess-Info.plist"; sourceTree = "<group>"; };
+		BC89413F13FAF6E2001E4306 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BC89414113FAF6E2001E4306 /* PhotoshopFileAccess-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PhotoshopFileAccess-Prefix.pch"; sourceTree = "<group>"; };
+		BC89414713FAF6E2001E4306 /* PhotoshopFileAccessTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoshopFileAccessTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC89414E13FAF6E2001E4306 /* PhotoshopFileAccessTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PhotoshopFileAccessTests-Info.plist"; sourceTree = "<group>"; };
+		BC89415013FAF6E2001E4306 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BC89415213FAF6E2001E4306 /* PhotoshopFileAccessTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PhotoshopFileAccessTests-Prefix.pch"; sourceTree = "<group>"; };
+		BC89415313FAF6E2001E4306 /* PhotoshopFileAccessTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoshopFileAccessTests.h; sourceTree = "<group>"; };
+		BC89415513FAF6E2001E4306 /* PhotoshopFileAccessTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoshopFileAccessTests.m; sourceTree = "<group>"; };
+		BC89415F13FAF70C001E4306 /* SoSharedLibDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoSharedLibDefs.h; sourceTree = "<group>"; };
+		BC89416113FAF732001E4306 /* PhotoshopFileAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoshopFileAccess.h; sourceTree = "<group>"; };
+		BC89416213FAF732001E4306 /* PhotoshopFileAccess.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PhotoshopFileAccess.mm; sourceTree = "<group>"; };
+		BC89416613FAFC3B001E4306 /* MakeBody.jsx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MakeBody.jsx; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.javascript; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BC89412E13FAF6E2001E4306 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC89413613FAF6E2001E4306 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC89414313FAF6E2001E4306 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC89414813FAF6E2001E4306 /* Cocoa.framework in Frameworks */,
+				BC89414B13FAF6E2001E4306 /* PhotoshopFileAccess.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BC89412613FAF6E2001E4306 = {
+			isa = PBXGroup;
+			children = (
+				BC89413B13FAF6E2001E4306 /* PhotoshopFileAccess */,
+				BC89414C13FAF6E2001E4306 /* PhotoshopFileAccessTests */,
+				BC89413413FAF6E2001E4306 /* Frameworks */,
+				BC89413313FAF6E2001E4306 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BC89413313FAF6E2001E4306 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BC89413213FAF6E2001E4306 /* PhotoshopFileAccess.framework */,
+				BC89414713FAF6E2001E4306 /* PhotoshopFileAccessTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BC89413413FAF6E2001E4306 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BC89413513FAF6E2001E4306 /* Cocoa.framework */,
+				BC89413713FAF6E2001E4306 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BC89413713FAF6E2001E4306 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BC89413813FAF6E2001E4306 /* AppKit.framework */,
+				BC89413913FAF6E2001E4306 /* CoreData.framework */,
+				BC89413A13FAF6E2001E4306 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		BC89413B13FAF6E2001E4306 /* PhotoshopFileAccess */ = {
+			isa = PBXGroup;
+			children = (
+				BC89416613FAFC3B001E4306 /* MakeBody.jsx */,
+				BC89413C13FAF6E2001E4306 /* Supporting Files */,
+			);
+			path = PhotoshopFileAccess;
+			sourceTree = "<group>";
+		};
+		BC89413C13FAF6E2001E4306 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BC89415F13FAF70C001E4306 /* SoSharedLibDefs.h */,
+				BC89413D13FAF6E2001E4306 /* PhotoshopFileAccess-Info.plist */,
+				BC89413E13FAF6E2001E4306 /* InfoPlist.strings */,
+				BC89414113FAF6E2001E4306 /* PhotoshopFileAccess-Prefix.pch */,
+				BC89416113FAF732001E4306 /* PhotoshopFileAccess.h */,
+				BC89416213FAF732001E4306 /* PhotoshopFileAccess.mm */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BC89414C13FAF6E2001E4306 /* PhotoshopFileAccessTests */ = {
+			isa = PBXGroup;
+			children = (
+				BC89415313FAF6E2001E4306 /* PhotoshopFileAccessTests.h */,
+				BC89415513FAF6E2001E4306 /* PhotoshopFileAccessTests.m */,
+				BC89414D13FAF6E2001E4306 /* Supporting Files */,
+			);
+			path = PhotoshopFileAccessTests;
+			sourceTree = "<group>";
+		};
+		BC89414D13FAF6E2001E4306 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BC89414E13FAF6E2001E4306 /* PhotoshopFileAccessTests-Info.plist */,
+				BC89414F13FAF6E2001E4306 /* InfoPlist.strings */,
+				BC89415213FAF6E2001E4306 /* PhotoshopFileAccessTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		BC89412F13FAF6E2001E4306 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC89416013FAF70C001E4306 /* SoSharedLibDefs.h in Headers */,
+				BC89416313FAF732001E4306 /* PhotoshopFileAccess.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		BC89413113FAF6E2001E4306 /* PhotoshopFileAccess */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC89415913FAF6E2001E4306 /* Build configuration list for PBXNativeTarget "PhotoshopFileAccess" */;
+			buildPhases = (
+				BC89412D13FAF6E2001E4306 /* Sources */,
+				BC89412E13FAF6E2001E4306 /* Frameworks */,
+				BC89412F13FAF6E2001E4306 /* Headers */,
+				BC89413013FAF6E2001E4306 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PhotoshopFileAccess;
+			productName = PhotoshopFileAccess;
+			productReference = BC89413213FAF6E2001E4306 /* PhotoshopFileAccess.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		BC89414613FAF6E2001E4306 /* PhotoshopFileAccessTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC89415C13FAF6E2001E4306 /* Build configuration list for PBXNativeTarget "PhotoshopFileAccessTests" */;
+			buildPhases = (
+				BC89414213FAF6E2001E4306 /* Sources */,
+				BC89414313FAF6E2001E4306 /* Frameworks */,
+				BC89414413FAF6E2001E4306 /* Resources */,
+				BC89414513FAF6E2001E4306 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BC89414A13FAF6E2001E4306 /* PBXTargetDependency */,
+			);
+			name = PhotoshopFileAccessTests;
+			productName = PhotoshopFileAccessTests;
+			productReference = BC89414713FAF6E2001E4306 /* PhotoshopFileAccessTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BC89412813FAF6E2001E4306 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = BC89412B13FAF6E2001E4306 /* Build configuration list for PBXProject "PhotoshopFileAccess" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BC89412613FAF6E2001E4306;
+			productRefGroup = BC89413313FAF6E2001E4306 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BC89413113FAF6E2001E4306 /* PhotoshopFileAccess */,
+				BC89414613FAF6E2001E4306 /* PhotoshopFileAccessTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BC89413013FAF6E2001E4306 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC89414013FAF6E2001E4306 /* InfoPlist.strings in Resources */,
+				BC89416713FAFC3B001E4306 /* MakeBody.jsx in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC89414413FAF6E2001E4306 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC89415113FAF6E2001E4306 /* InfoPlist.strings in Resources */,
+				BC89415413FAF6E2001E4306 /* PhotoshopFileAccessTests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BC89414513FAF6E2001E4306 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BC89412D13FAF6E2001E4306 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC89416413FAF732001E4306 /* PhotoshopFileAccess.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC89414213FAF6E2001E4306 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC89415613FAF6E2001E4306 /* PhotoshopFileAccessTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BC89414A13FAF6E2001E4306 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BC89413113FAF6E2001E4306 /* PhotoshopFileAccess */;
+			targetProxy = BC89414913FAF6E2001E4306 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BC89413E13FAF6E2001E4306 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BC89413F13FAF6E2001E4306 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BC89414F13FAF6E2001E4306 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BC89415013FAF6E2001E4306 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BC89415713FAF6E2001E4306 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		BC89415813FAF6E2001E4306 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		BC89415A13FAF6E2001E4306 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PhotoshopFileAccess/PhotoshopFileAccess-Prefix.pch";
+				INFOPLIST_FILE = "PhotoshopFileAccess/PhotoshopFileAccess-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		BC89415B13FAF6E2001E4306 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PhotoshopFileAccess/PhotoshopFileAccess-Prefix.pch";
+				INFOPLIST_FILE = "PhotoshopFileAccess/PhotoshopFileAccess-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+		BC89415D13FAF6E2001E4306 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PhotoshopFileAccessTests/PhotoshopFileAccessTests-Prefix.pch";
+				INFOPLIST_FILE = "PhotoshopFileAccessTests/PhotoshopFileAccessTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		BC89415E13FAF6E2001E4306 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PhotoshopFileAccessTests/PhotoshopFileAccessTests-Prefix.pch";
+				INFOPLIST_FILE = "PhotoshopFileAccessTests/PhotoshopFileAccessTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BC89412B13FAF6E2001E4306 /* Build configuration list for PBXProject "PhotoshopFileAccess" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC89415713FAF6E2001E4306 /* Debug */,
+				BC89415813FAF6E2001E4306 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BC89415913FAF6E2001E4306 /* Build configuration list for PBXNativeTarget "PhotoshopFileAccess" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC89415A13FAF6E2001E4306 /* Debug */,
+				BC89415B13FAF6E2001E4306 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		BC89415C13FAF6E2001E4306 /* Build configuration list for PBXNativeTarget "PhotoshopFileAccessTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC89415D13FAF6E2001E4306 /* Debug */,
+				BC89415E13FAF6E2001E4306 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BC89412813FAF6E2001E4306 /* Project object */;
+}

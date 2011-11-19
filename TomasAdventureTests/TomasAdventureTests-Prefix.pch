@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'TomasAdventureTests' target in the 'TomasAdventureTests' project
+//
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+#endif

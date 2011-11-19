@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'PhotoshopFileAccess' target in the 'PhotoshopFileAccess' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
