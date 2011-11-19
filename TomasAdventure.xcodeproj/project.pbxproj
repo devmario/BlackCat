@@ -508,7 +508,6 @@
 				BC89410113FAE14B001E4306 /* 3rd */,
 				BC89422213FB4EB9001E4306 /* Core */,
 				BC89421813FB4DCB001E4306 /* Data */,
-				BC89410513FAE1F7001E4306 /* Scene */,
 				BC30D4441441F34100B280CF /* UI */,
 				BC89421913FB4DE2001E4306 /* Game */,
 				BC893F8B13FADA44001E4306 /* TomasAdventureAppDelegate.h */,
@@ -784,13 +783,6 @@
 				BC89403813FADCF0001E4306 /* src */,
 			);
 			name = 3rd;
-			sourceTree = "<group>";
-		};
-		BC89410513FAE1F7001E4306 /* Scene */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Scene;
 			sourceTree = "<group>";
 		};
 		BC8941D913FB3885001E4306 /* Resources */ = {
