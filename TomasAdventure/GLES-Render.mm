@@ -24,11 +24,9 @@
 //
 
 #include "GLES-Render.h"
-
-
+#include "GameObject.h"
 #include <cstdio>
 #include <cstdarg>
-
 #include <cstring>
 
 GLESDebugDraw::GLESDebugDraw()

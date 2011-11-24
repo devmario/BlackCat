@@ -695,27 +695,31 @@ public:
             if(isHaveRope) {
                 equiptment = _equiptment;
                 UILayer* uiLayer = ui_id;
-                [uiLayer setEquiptment:equiptment];
+                if([uiLayer getUILayerStyle] == UILayerStyleJoyPad)
+                    [uiLayer setEquiptment:equiptment];
                 return YES;
             }
         } else if(_equiptment == EquiptmentBow) {
             if(isHaveBow) {
                 equiptment = _equiptment;
                 UILayer* uiLayer = ui_id;
-                [uiLayer setEquiptment:equiptment];
+                if([uiLayer getUILayerStyle] == UILayerStyleJoyPad)
+                    [uiLayer setEquiptment:equiptment];
                 return YES;
             }
         } else if(_equiptment == EquiptmentBalloon) {
             if(isHaveBalloon) {
                 equiptment = _equiptment;
                 UILayer* uiLayer = ui_id;
-                [uiLayer setEquiptment:equiptment];
+                if([uiLayer getUILayerStyle] == UILayerStyleJoyPad)
+                    [uiLayer setEquiptment:equiptment];
                 return YES;
             }
         } else {
             equiptment = _equiptment;
             UILayer* uiLayer = ui_id;
-            [uiLayer setEquiptment:equiptment];
+            if([uiLayer getUILayerStyle] == UILayerStyleJoyPad)
+                [uiLayer setEquiptment:equiptment];
             return YES;
         }
     }
@@ -1102,7 +1106,8 @@ public:
     equiptment = [[dict objectForKey:@"equiptment"] intValue];
     
     UILayer* uiLayer = ui_id;
-    [uiLayer setEquiptment:equiptment];
+    if([uiLayer getUILayerStyle] == UILayerStyleJoyPad)
+        [uiLayer setEquiptment:equiptment];
     
     body->SetTransform(b2Vec2(x, y), 0);
     body->SetLinearVelocity(b2Vec2_zero);
