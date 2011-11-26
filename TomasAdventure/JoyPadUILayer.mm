@@ -237,7 +237,7 @@
     if(tomasWorld->tomas->balloonActionType == BalloonOn) {
         float yx = -atan2f(_y, _x);
         VBVector2D polar = VBVector2DPolar(1.0, yx);
-        tomasWorld->tomas->balloonTargetX = -polar.y * 25.0f;
+        tomasWorld->tomas->balloonTargetX = -polar.y * 2.5f;
     }
 }
 

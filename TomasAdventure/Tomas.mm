@@ -116,6 +116,7 @@ public:
             Arrow* _arrow = (Arrow*)_arrowObj;
             for(int i = 0; i < [tomas->arrowArray count]; i++) {
                 if(_arrow == [tomas->arrowArray objectAtIndex:i]) {
+                    printf("%f\n", impulse->normalImpulses[0]);
                     if(impulse->normalImpulses[0] > 0.025 && contact->GetManifold()->points[0].localPoint.x < 0.0) {
                         _arrow->isHit = YES;
                         _arrow->type = BodyArrowHit;
@@ -182,6 +183,13 @@ public:
     }
     
     void PostSolve(b2Contact* contact, const b2ContactImpulse* impulse) {
+        
+        if(CheckArrow(contact->GetFixtureA()->GetBody(), contact->GetFixtureB()->GetBody(), contact, impulse) == false) {
+            CheckArrow(contact->GetFixtureB()->GetBody(), contact->GetFixtureA()->GetBody(), contact, impulse);
+        }
+        if(CheckArrow(contact->GetFixtureA()->GetBody(), contact->GetFixtureB()->GetBody(), contact, impulse) == false) {
+            CheckArrow(contact->GetFixtureB()->GetBody(), contact->GetFixtureA()->GetBody(), contact, impulse);
+        }
         //        GameObject* objA = (GameObject*)contact->GetFixtureA()->GetBody()->GetUserData();
         //        GameObject* objB = (GameObject*)contact->GetFixtureB()->GetBody()->GetUserData();
         //        if((objA->type == BodyGround || objA->type == BodyArrowHit) && objB->type == BodyTomasBody) {
@@ -289,6 +297,7 @@ public:
     
     
     TomasContactListener* contactListner = new TomasContactListener;
+    contactListner->tomasAddress = self;
     world->SetContactListener(contactListner);
     TomasContactFilter* contactFilter = new TomasContactFilter;
     contactFilter->tomasAddress = self;
@@ -574,7 +583,7 @@ public:
     } else {
         balloonX += (balloonTargetX - balloonX) * 0.25;
         if(balloon) {
-            balloon->body->SetLinearVelocity(b2Vec2(balloonX, -10));
+            balloon->body->SetLinearVelocity(b2Vec2(balloonX, -2.5));
         }
     }
 }
@@ -903,17 +912,17 @@ public:
         balloonActionType = BalloonOn;
         b2BodyDef _bodyDef;
         _bodyDef.type = b2_dynamicBody;
-        _bodyDef.position.Set(body->GetWorldCenter().x, body->GetWorldCenter().y - 30);
+        _bodyDef.position.Set(body->GetWorldCenter().x, body->GetWorldCenter().y - 30/20.0);
         _bodyDef.angle = 0;
         _bodyDef.fixedRotation = true;
         
         b2CircleShape _shape;
         _shape.m_p.Set(0, 0);
-        _shape.m_radius = 20;
+        _shape.m_radius = 20/20.0;
         
         b2FixtureDef _fixtureDef;
         _fixtureDef.shape = &_shape;
-        _fixtureDef.density = 0.0001;
+        _fixtureDef.density = 1.0;
         _fixtureDef.restitution = 0;
         _fixtureDef.isSensor = false;
         _fixtureDef.friction = 0;
@@ -939,7 +948,8 @@ public:
     }
 }
 
-- (BOOL)bowAvailable:(VBVector2D)_vec {b2Body* _body = world->GetBodyList();
+- (BOOL)bowAvailable:(VBVector2D)_vec {
+    b2Body* _body = world->GetBodyList();
     b2Vec2 _hitVec;
     float _length = FLT_MAX;
     bool _finded = false;
@@ -961,19 +971,23 @@ public:
                 b2RayCastInput inputRay;
                 inputRay.p1 = body->GetWorldCenter();
                 VBVector2D _value = VBVector2DSubtract(_vec, bowBeginVec);
-                _value = VBVector2DNormal(_value, 100.0);
+                _value = VBVector2DNormal(_value, 5.0);
                 inputRay.maxFraction = VBVector2DLength(_value);
                 inputRay.p2 = inputRay.p1 + b2Vec2(-_value.x, -_value.y);
                 b2RayCastOutput outputRay;
                 //이밑라인에서 에러발생 처리 필요
-                if(_fixture->RayCast(&outputRay, inputRay, 0)) {
-                    b2Vec2 hitVec = inputRay.p1 + outputRay.fraction * (inputRay.p2 - inputRay.p1);
-                    float length = b2Distance(hitVec, body->GetWorldCenter());
-                    if(_length > length) {
-                        _hitVec = hitVec;
-                        _length = length;
-                        _finded = true;
+                int shapeLen = _fixture->GetShape()->GetChildCount();
+                for(int i = 0; i < shapeLen; i++) {
+                    if(_fixture->GetShape()->RayCast(&outputRay, inputRay, _body->GetTransform(), i)) {
+                        b2Vec2 hitVec = inputRay.p1 + outputRay.fraction * (inputRay.p2 - inputRay.p1);
+                        float length = b2Distance(hitVec, body->GetWorldCenter());
+                        if(_length > length) {
+                            _hitVec = hitVec;
+                            _length = length;
+                            _finded = true;
+                        }
                     }
+                    
                 }
             }
             _fixture = _fixture->GetNext();
@@ -981,8 +995,8 @@ public:
         _body = _body->GetNext();
     }
     
-    //활시휘 당기려면 40만큼의 공간이 필요
-    if(_length < 40)
+    //활시휘 당기려면 1.5만큼의 공간이 필요
+    if(_length < 1.5f)
         return NO;
     
     //적어도 1이상은 당겨야 함
@@ -1003,7 +1017,7 @@ public:
     if(bowActionType == BowReady) {
         VBVector2D dir = VBVector2DSubtract(_vec, bowBeginVec);
         float angle = VBVector2DAngle(dir);
-        VBVector2D dirNormal = VBVector2DNormal(dir, 20);
+        VBVector2D dirNormal = VBVector2DNormal(dir, 1.0);
         
         if(arrowGuide == nil) {
             b2BodyDef _arrowBodyDef;
@@ -1012,11 +1026,11 @@ public:
             _arrowBodyDef.angle = angle;
             
             b2PolygonShape _arrowShape;
-            _arrowShape.SetAsBox(10, 0.1);
+            _arrowShape.SetAsBox(0.5, 0.01);
             
             b2FixtureDef _arrowFixture;
             _arrowFixture.shape = &_arrowShape;
-            _arrowFixture.density = 0.0001;
+            _arrowFixture.density = 1.0;
             _arrowFixture.restitution = 0.0;
             _arrowFixture.isSensor = true;
             _arrowFixture.friction = 1.0;
@@ -1043,7 +1057,7 @@ public:
             VBVector2D dir = VBVector2DSubtract(_vec, bowBeginVec);
             float length = VBVector2DLength(dir);
             float angle = VBVector2DAngle(dir);
-            VBVector2D dirNormal = VBVector2DNormal(dir, 20);
+            VBVector2D dirNormal = VBVector2DNormal(dir, 1.0);
             
             b2BodyDef _arrowBodyDef;
             _arrowBodyDef.type = b2_dynamicBody;
@@ -1051,11 +1065,11 @@ public:
             _arrowBodyDef.angle = angle;
             
             b2PolygonShape _arrowShape;
-            _arrowShape.SetAsBox(10, 0.1);
+            _arrowShape.SetAsBox(0.5, 0.01);
             
             b2FixtureDef _arrowFixture;
             _arrowFixture.shape = &_arrowShape;
-            _arrowFixture.density = 0.0001;
+            _arrowFixture.density = 1.0;
             _arrowFixture.restitution = 0.0;
             _arrowFixture.isSensor = false;
             _arrowFixture.friction = 1.0;
@@ -1063,7 +1077,7 @@ public:
             Arrow* arrow = [[Arrow alloc] initWithWorld:world bodyDef:_arrowBodyDef fixtureDef:_arrowFixture];
             arrow->type = BodyArrow;
             
-            dirNormal = VBVector2DNormal(dir, length / 1000.0);
+            dirNormal = VBVector2DNormal(dir, length / 100.0);//활시위 파워
             arrow->body->ApplyLinearImpulse(b2Vec2(-dirNormal.x, -dirNormal.y), arrow->body->GetWorldCenter());
             
             arrow->life = 3.0;
@@ -1079,7 +1093,7 @@ public:
     }
 }
 - (void)bowOff {
-    bowActionType = BowReady;
+    bowActionType = BowOff;
     if(arrowGuide) {
         [arrowGuide release];
         arrowGuide = nil;

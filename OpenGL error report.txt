@@ -1,0 +1,49 @@
+2011 11 26
+
+unity xcode project 코드에서 c code로 유니티 렌더링후 OpenGL 사용시 에러 리포트(c code 레벨의 텍스쳐가 하얗게 나오는 것의 원인인가를 찾는 리포팅)
+
+코드레벨 주석처리 결과들
+opengl 2.0 에서 c code 실행 안하고 discard 한후 에러체크 no error
+opengl 2.0 에서 c code 실행시 discard 한후 에러체크 invalid enum
+opengl 1.0 에서 c code 실행시 discard 한후 에러체크 invalid enum
+opengl 1.0 에서 c code 실행 안하고 discard 한후 에러체크 no error
+opengl 1.0 에서 c code 실행하고 텍스쳐 로딩안할경우 discard 한후 에러체크 invalid enum
+opengl 1.0 에서 c code 실행하고 텍스쳐 로딩안하고 VBEngineSrart시 OpenGL Blend및 ColorMaterial코드 뺄경우 discard 한후 에러체크 invalid enum
+opengl 1.0 에서 c code 실행하고 텍스쳐 로딩안하고 VBEngineSrart시 OpenGL Blend및 ColorMaterial코드 빼고 draw안할시(OpenGL설정은 하고) discard 한후 에러체크 invalid enum(이거하면 뻗음)
+opengl 1.0 에서 c code 실행안하고 텍스쳐 로딩안할경우 discard 한후 에러체크 no error
+opengl 1.0 에서 c code 실행안하고 텍스쳐 로딩할경우 discard 한후 에러체크 no error (하지만 Received memory warning. Level=1, 재 디버그시에도 Received memory warning. Level=1)
+opengl 1.0 에서 c code 실행하고 텍스쳐 로딩하고 Projection Matrix, ModelView Matrix 스왑해줄 경우 에러체크 invalid enum(Received memory warning. Level=1)
+opengl 1.0 에서 c code 실행하고 텍스쳐 로딩하고 Projection Matrix, ModelView Matrix 스왑해주고 매트릭스 모드 설정 돌아가기 셋팅 경우 에러체크 invalid enum(Received memory warning. Level=1)
+opengl 1.0 에서 c code 실행하고 텍스쳐 로딩하고 OpenGL설정하는곳을 모두 실행 안할시 no error(Received memory warning. Level=1) 하지만 마지막 c code 에서의 OpenGL칼라 설정값으로 나옴
+
+glColor4f는 OpenGL코드로 설정후 Unity렌더링시 색상값이 초기화 되지 않음(그 외에는 모두 돌아감)
+그외의 설정값들 이전으로 돌리지 않아도 작동함
+
+glGetError();로 리포트
+
+OpenGL에러 픽스
+glMatrixMode(GL_PROJECTION_MATRIX);를 glMatrixMode(GL_PROJECTION);로 수정
+glMatrixMode(GL_MODELVIEW_MATRIX);를 glMatrixMode(GL_MODELVIEW);로 수정
+
+하지만 텍스쳐가 나오지 않고 텍스쳐 로딩시 Level1짜리 Memory Warning이 나는것을 해결해야 함
+
+텍스쳐가 나오지 않는 예상하는 원인은 PVR로 가정(PVR로 테스팅 필요)하고 리포트
+텍스쳐파라미터 값이 바뀌어서 발생하는 문제인지 리포팅결과 아님(다음의 코드를 glBindTexture이후에 삽입
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAX_ANISOTROPY_EXT, 1.0f);
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+2배로 늘려도 나오지 않음
+텍스쳐 바인딩이 되는지 확인
+Unity Texture 24(마지막 Unity텍스쳐)
+VBEngine Texture Bind 1(VBEngine텍스쳐)
+강제로 이미지 데이터에 검정색으로 넣었는데도 나오지 않음
+Unity를 호출해주는 C code의 Repaint안에 UnityInputProcess()와 UnityPlayerLoop()를 호출하지 않자 화면에 아무것도 나오지 않음
+라이팅 문제 인가 해서 glDiable(GL_LIGHTNING) glDisableClientState(GL_NORMAL_ARRAY)해도 나오지 않음
+텍스쳐를 로딩을 약 1.5초 이후에 로드하니 나옴
+하지만 Texcoord문제있음
+
+메모리 워닝은 unity3d에서의 2048텍스쳐의 메모리 풀이 하나의 Application domain의 GPU메모리 풀이라고 가정(OpenGL Test, Unity 텍스쳐 사이즈 변경필요)하고 리포트
+
+드바이스에서 프로그램 실행중에 백그라운드로 들어갔을시 에러나고 재실행하면 처음부터 다시 실행

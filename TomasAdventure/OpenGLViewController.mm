@@ -110,15 +110,6 @@ OpenGLViewController* rootViewController = nil;
     
     [currentScene draw];
     
-    glPushMatrix();
-	glDisable(GL_TEXTURE_2D);
-	glDisableClientState(GL_COLOR_ARRAY);
-	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-    
-	glEnable(GL_TEXTURE_2D);
-	glEnableClientState(GL_COLOR_ARRAY);
-	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-    
     absoluteTime = currentAbsoluteTime;
     
     [(EAGLView *)self.view presentFramebuffer];
