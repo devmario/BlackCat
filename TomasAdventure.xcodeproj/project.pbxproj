@@ -154,6 +154,10 @@
 		BCD4D417147E3428004967E5 /* VBString.c in Sources */ = {isa = PBXBuildFile; fileRef = BCD4D3A0147E3428004967E5 /* VBString.c */; };
 		BCD4D418147E3428004967E5 /* VBEngine.c in Sources */ = {isa = PBXBuildFile; fileRef = BCD4D3A3147E3428004967E5 /* VBEngine.c */; };
 		BCD4D419147E3428004967E5 /* CppTweener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BCD4D3A7147E3428004967E5 /* CppTweener.cpp */; };
+		BCD55C8F148344000097E7C1 /* StageSelectTableViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BCD55C8D148343FF0097E7C1 /* StageSelectTableViewController.mm */; };
+		BCD55C90148344000097E7C1 /* StageSelectTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCD55C8E148343FF0097E7C1 /* StageSelectTableViewController.xib */; };
+		BCD55C941483441D0097E7C1 /* SavePointSelectTableViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BCD55C921483441D0097E7C1 /* SavePointSelectTableViewController.mm */; };
+		BCD55C951483441D0097E7C1 /* SavePointSelectTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCD55C931483441D0097E7C1 /* SavePointSelectTableViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -431,6 +435,12 @@
 		BCD4D3A5147E3428004967E5 /* VBType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBType.h; sourceTree = "<group>"; };
 		BCD4D3A7147E3428004967E5 /* CppTweener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CppTweener.cpp; sourceTree = "<group>"; };
 		BCD4D3A8147E3428004967E5 /* CppTweener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CppTweener.h; sourceTree = "<group>"; };
+		BCD55C8C148343FF0097E7C1 /* StageSelectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageSelectTableViewController.h; sourceTree = "<group>"; };
+		BCD55C8D148343FF0097E7C1 /* StageSelectTableViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StageSelectTableViewController.mm; sourceTree = "<group>"; };
+		BCD55C8E148343FF0097E7C1 /* StageSelectTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StageSelectTableViewController.xib; sourceTree = "<group>"; };
+		BCD55C911483441D0097E7C1 /* SavePointSelectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavePointSelectTableViewController.h; sourceTree = "<group>"; };
+		BCD55C921483441D0097E7C1 /* SavePointSelectTableViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SavePointSelectTableViewController.mm; sourceTree = "<group>"; };
+		BCD55C931483441D0097E7C1 /* SavePointSelectTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SavePointSelectTableViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -520,6 +530,12 @@
 				BC893F8E13FADA44001E4306 /* iPhone */,
 				BC893F9513FADA44001E4306 /* iPad */,
 				BC893F8313FADA44001E4306 /* Supporting Files */,
+				BCD55C8C148343FF0097E7C1 /* StageSelectTableViewController.h */,
+				BCD55C8D148343FF0097E7C1 /* StageSelectTableViewController.mm */,
+				BCD55C8E148343FF0097E7C1 /* StageSelectTableViewController.xib */,
+				BCD55C911483441D0097E7C1 /* SavePointSelectTableViewController.h */,
+				BCD55C921483441D0097E7C1 /* SavePointSelectTableViewController.mm */,
+				BCD55C931483441D0097E7C1 /* SavePointSelectTableViewController.xib */,
 			);
 			path = TomasAdventure;
 			sourceTree = "<group>";
@@ -1074,6 +1090,8 @@
 				BC949F411404B98200D8A693 /* ui.obj in Resources */,
 				BC949F421404B98200D8A693 /* ui.png in Resources */,
 				BC3B94D01476FBE20087638A /* default.plist in Resources */,
+				BCD55C90148344000097E7C1 /* StageSelectTableViewController.xib in Resources */,
+				BCD55C951483441D0097E7C1 /* SavePointSelectTableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1237,6 +1255,8 @@
 				BCD4D417147E3428004967E5 /* VBString.c in Sources */,
 				BCD4D418147E3428004967E5 /* VBEngine.c in Sources */,
 				BCD4D419147E3428004967E5 /* CppTweener.cpp in Sources */,
+				BCD55C8F148344000097E7C1 /* StageSelectTableViewController.mm in Sources */,
+				BCD55C941483441D0097E7C1 /* SavePointSelectTableViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

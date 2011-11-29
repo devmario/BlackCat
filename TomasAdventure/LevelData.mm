@@ -2,11 +2,11 @@
 
 @implementation LevelData
 
-- (id)initWithContentsOfFile:(NSString*)_url_str world:(b2World*)_world {
+- (id)initWithContentsOfFile:(NSString*)_url_str {
     self = [super init];
     if(self) {
-        world = _world;
         bodies = [[NSMutableArray alloc] init];
+        saveBody = [[NSMutableArray alloc] init];
         FILE* file = fopen([_url_str UTF8String], "rb");
         fread(&start, sizeof(VBVector2D), 1, file);
         start.x /= 20.0;
@@ -29,17 +29,17 @@
             bodyDef.angle = 0.0f;
             
             b2FixtureDef fixtureDef;
-            b2Shape* shape;
+            b2Shape* _shape;
             if(type == BodyGround) {
                 b2ChainShape* chainShape = new b2ChainShape;
                 chainShape->CreateLoop(vec, pointslen);
                 fixtureDef.shape = chainShape;
-                shape = chainShape;
+                _shape = chainShape;
             } else {
                 b2PolygonShape* polygonShape = new b2PolygonShape;
                 polygonShape->Set(vec, pointslen);
                 fixtureDef.shape = polygonShape;
-                shape = polygonShape;
+                _shape = polygonShape;
             }
             
             fixtureDef.density = 1;
@@ -71,12 +71,15 @@
                 fixtureDef.isSensor = true;
             fixtureDef.friction = 1.0;
             
-            GameObject* body = [[GameObject alloc] initWithWorld:world bodyDef:bodyDef fixtureDef:fixtureDef];
+            GameObject* body = [[GameObject alloc] initWithBodyDef:bodyDef fixtureDef:fixtureDef shape:_shape];
             body->type = type;
+            if(type == BodySave) {
+                [saveBody addObject:body];
+            }
             [bodies addObject:body];
+            [body release];
             
             free(vec);
-            delete shape;
         }
         fclose(file);
         
@@ -86,11 +89,24 @@
     return self;
 }
 
-- (void)dealloc {
+- (void)create:(b2World*)_world {
+    world = _world;
     for(int i = 0; i < [bodies count]; i++) {
-        GameObject* body = [bodies objectAtIndex:i];
-        [body release];
+        GameObject* obj = [bodies objectAtIndex:i];
+        [obj create:_world];
     }
+}
+
+- (void)clear {
+    for(int i = 0; i < [bodies count]; i++) {
+        GameObject* obj = [bodies objectAtIndex:i];
+        world->DestroyBody(obj->body);
+    }
+}
+
+
+- (void)dealloc {
+    [saveBody release];
     [bodies release];
     
     [saveData release];

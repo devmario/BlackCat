@@ -56,7 +56,12 @@ OpenGLViewController* rootViewController = nil;
     }
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+- (void)quickLoad {
+    TomasWorld* tw = (TomasWorld*)currentScene;
+    [tw quickLoad];
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil tomasData:(TomasData*)_td levelData:(LevelData*)_ld {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     rootViewController = self;
@@ -76,15 +81,21 @@ OpenGLViewController* rootViewController = nil;
     
     animating = FALSE;
     
-    tomasData = [[TomasData alloc] init];
-    currentScene = [[TomasWorld alloc] initWithTomasData:tomasData];
+    tomasData = _td;
+    levelData = _ld;
+    currentScene = [[TomasWorld alloc] initWithTomasData:tomasData withLevelData:levelData];
+    
+    
+    UIBarButtonItem* bt1 = [[UIBarButtonItem alloc] initWithTitle:@"퀵로드" style:UIBarButtonItemStylePlain target:self action:@selector(quickLoad)];
+    NSArray* arr = [[NSArray alloc] initWithObjects:bt1, nil];
+    [self.navigationItem setRightBarButtonItems:arr];
+    [bt1 release];
     
     return self;
 }
 
 - (void)dealloc {
     [currentScene release];
-    [tomasData release];
     // Tear down context.
     if ([EAGLContext currentContext] == context)
         [EAGLContext setCurrentContext:nil];

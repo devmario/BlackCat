@@ -6,12 +6,12 @@
 
 @implementation TomasWorld
 
-- (id)initWithTomasData:(TomasData*)_tomasData {
+- (id)initWithTomasData:(TomasData*)_tomasData withLevelData:(LevelData*)_levelData {
     self = [super init];
     if (self) {
         b2Vec2 gravity = b2Vec2(0, 30.0);
         world = new b2World(gravity);
-        world->SetAllowSleeping(true);
+        world->SetAllowSleeping(false);
         
         b2Draw* debugDraw = new GLESDebugDraw();
         uint32 flags = 0;
@@ -20,7 +20,8 @@
         world->SetDebugDraw(debugDraw);
         
         tomasData = _tomasData;
-        levelData = [[LevelData alloc] initWithContentsOfFile:[tomasData getCurrentStageFile] world:world];
+        levelData = _levelData;
+        [levelData create:world];
         [levelData saveFirst];
         [levelData save];
         
@@ -44,7 +45,7 @@
 - (void)dealloc {
     [uiLayer release];
     [tomas release];
-    [levelData release];
+    [levelData clear];
     delete world;
     [super dealloc];
 }

@@ -44,6 +44,8 @@ Unity를 호출해주는 C code의 Repaint안에 UnityInputProcess()와 UnityPla
 텍스쳐를 로딩을 약 1.5초 이후에 로드하니 나옴
 하지만 Texcoord문제있음
 
+->
+
 메모리 워닝은 unity3d에서의 2048텍스쳐의 메모리 풀이 하나의 Application domain의 GPU메모리 풀이라고 가정(OpenGL Test, Unity 텍스쳐 사이즈 변경필요)하고 리포트
 
 드바이스에서 프로그램 실행중에 백그라운드로 들어갔을시 에러나고 재실행하면 처음부터 다시 실행

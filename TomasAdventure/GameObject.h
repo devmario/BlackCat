@@ -30,14 +30,19 @@ typedef int BodyType;
 @interface GameObject : NSObject {
 @public
     BodyType type;
+    b2BodyDef bodyDef;
+    b2FixtureDef fixtureDef;
     b2Body* body;
-    b2World* world;
     CFTimeInterval _elapse;
+    b2World* world;
+    b2Shape* shape;
 }
 
-- (id)initWithWorld:(b2World*)_world 
-            bodyDef:(b2BodyDef)_body_def 
-         fixtureDef:(b2FixtureDef)_fixture_Def;
+- (id)initWithBodyDef:(b2BodyDef)_body_def 
+           fixtureDef:(b2FixtureDef)_fixture_Def
+                shape:(b2Shape*)_shape;
+
+- (void)create:(b2World*)_world;
 
 - (void)update:(CFTimeInterval)_delta;
 

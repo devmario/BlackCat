@@ -43,4 +43,16 @@
     [dict writeToFile:[NSString stringWithFormat:@"%@/%@", [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)  objectAtIndex:0], @"default.plist"] atomically:YES];
 }
 
+- (int)getStageFilePathCount {
+    return [[dict objectForKey:@"stageFile"] count];
+}
+
+- (NSString*)getStageFilePath:(int)_stage {
+    return [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], [[dict objectForKey:@"stageFile"] objectAtIndex:_stage]];
+}
+
+- (NSString*)getStageFileName:(int)_stage {
+    return [NSString stringWithFormat:@"%@", [[dict objectForKey:@"stageFile"] objectAtIndex:_stage]];
+}
+
 @end

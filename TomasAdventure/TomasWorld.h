@@ -26,7 +26,7 @@
     UILayer* uiLayer;
 }
 
-- (id)initWithTomasData:(TomasData*)_tomasData;
+- (id)initWithTomasData:(TomasData*)_tomasData withLevelData:(LevelData*)_levelData;
 
 //User Interface
 - (void)touchBeginCenterOfTomas:(void*)_touch_pointer x:(float)_x y:(float)_y;

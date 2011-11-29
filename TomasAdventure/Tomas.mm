@@ -269,32 +269,32 @@ public:
 - (id)initWithWorld:(b2World*)_world 
           tomasData:(TomasData*)_tomasData 
                 pos:(VBVector2D)_pos  {
-    b2BodyDef bodyDef;
-    bodyDef.type = b2_dynamicBody;
-    bodyDef.position.Set(_pos.x, _pos.y);
-    bodyDef.angle = 0.0;
-    bodyDef.fixedRotation = true;
-    bodyDef.bullet = true;
+    b2BodyDef _bodyDef;
+    _bodyDef.type = b2_dynamicBody;
+    _bodyDef.position.Set(_pos.x, _pos.y);
+    _bodyDef.angle = 0.0;
+    _bodyDef.fixedRotation = true;
+    _bodyDef.bullet = true;
     
-    b2PolygonShape shape;
     b2Vec2 vec[4];
     vec[0] = b2Vec2(-5/20.0, -8/20.0);
     vec[1] = b2Vec2(5/20.0, -8/20.0);
     vec[2] = b2Vec2(5/20.0, 8/20.0);
     vec[3] = b2Vec2(-5/20.0, 8/20.0);
-    shape.Set(vec, 4);
     
-    b2FixtureDef fixtureDef;
-    fixtureDef.shape = &shape;
-    fixtureDef.density = 1.0;
-    fixtureDef.restitution = 0;
-    fixtureDef.isSensor = false;
-    fixtureDef.friction = 1.0;
+    b2PolygonShape* polygonShape = new b2PolygonShape;
+    polygonShape->Set(vec, 4);
     
-    self = [super initWithWorld:_world bodyDef:bodyDef fixtureDef:fixtureDef];
+    b2FixtureDef _fixtureDef;
+    _fixtureDef.shape = polygonShape;
+    _fixtureDef.density = 1.0;
+    _fixtureDef.restitution = 0;
+    _fixtureDef.isSensor = false;
+    _fixtureDef.friction = 1.0;
+    
+    self = [super initWithBodyDef:_bodyDef fixtureDef:_fixtureDef shape:polygonShape];
     self->type = BodyTomasBody;
-    body->SetUserData(self);
-    
+    [self create:_world];
     
     TomasContactListener* contactListner = new TomasContactListener;
     contactListner->tomasAddress = self;
@@ -851,14 +851,26 @@ public:
             b2PolygonShape _shape;
             _shape.SetAsBox(_length / (float)ropeCount / 2.0 + 1.0/20.0, 0.1/20.0);
             
+            
+            
+            b2Vec2 vec[4];
+            vec[0] = b2Vec2(-(_length / (float)ropeCount / 2.0 + 1.0/20.0), -0.1/20.0);
+            vec[1] = b2Vec2((_length / (float)ropeCount / 2.0 + 1.0/20.0), -0.1/20.0);
+            vec[2] = b2Vec2((_length / (float)ropeCount / 2.0 + 1.0/20.0), 0.1/20.0);
+            vec[3] = b2Vec2(-(_length / (float)ropeCount / 2.0 + 1.0/20.0), 0.1/20.0);
+            
+            b2PolygonShape* polygonShape = new b2PolygonShape;
+            polygonShape->Set(vec, 4);
+            
             b2FixtureDef _fixtureDef;
             _fixtureDef.shape = &_shape;
-            _fixtureDef.density = 11.0;
+            _fixtureDef.density = 20.0;
             _fixtureDef.restitution = 0;
             _fixtureDef.isSensor = false;
             _fixtureDef.friction = 0;
             
-            GameObject* obj = [[GameObject alloc] initWithWorld:world bodyDef:_bodyDef fixtureDef:_fixtureDef];
+            GameObject* obj = [[GameObject alloc] initWithBodyDef:_bodyDef fixtureDef:_fixtureDef shape:polygonShape];
+            [obj create:world];
             obj->type = BodyRope;
             [ropeArray addObject:obj];
             
@@ -916,18 +928,19 @@ public:
         _bodyDef.angle = 0;
         _bodyDef.fixedRotation = true;
         
-        b2CircleShape _shape;
-        _shape.m_p.Set(0, 0);
-        _shape.m_radius = 20/20.0;
+        b2CircleShape* _shape = new b2CircleShape;
+        _shape->m_p.Set(0, 0);
+        _shape->m_radius = 20/20.0;
         
         b2FixtureDef _fixtureDef;
-        _fixtureDef.shape = &_shape;
+        _fixtureDef.shape = _shape;
         _fixtureDef.density = 1.0;
         _fixtureDef.restitution = 0;
         _fixtureDef.isSensor = false;
         _fixtureDef.friction = 0;
         
-        balloon = [[GameObject alloc] initWithWorld:world bodyDef:_bodyDef fixtureDef:_fixtureDef];
+        balloon = [[GameObject alloc] initWithBodyDef:_bodyDef fixtureDef:_fixtureDef shape:_shape];
+        [balloon create:world];
         balloon->type = BodyBalloon;
         
         
@@ -1025,17 +1038,25 @@ public:
             _arrowBodyDef.position.Set(body->GetWorldCenter().x - dirNormal.x, body->GetWorldCenter().y - dirNormal.y);
             _arrowBodyDef.angle = angle;
             
-            b2PolygonShape _arrowShape;
-            _arrowShape.SetAsBox(0.5, 0.01);
+            
+            b2Vec2 vec[4];
+            vec[0] = b2Vec2(-0.5, -0.01);
+            vec[1] = b2Vec2(0.5, -0.01);
+            vec[2] = b2Vec2(0.5, 0.01);
+            vec[3] = b2Vec2(-0.5, 0.01);
+            
+            b2PolygonShape* polygonShape = new b2PolygonShape;
+            polygonShape->Set(vec, 4);
             
             b2FixtureDef _arrowFixture;
-            _arrowFixture.shape = &_arrowShape;
+            _arrowFixture.shape = polygonShape;
             _arrowFixture.density = 1.0;
             _arrowFixture.restitution = 0.0;
             _arrowFixture.isSensor = true;
             _arrowFixture.friction = 1.0;
             
-            arrowGuide = [[GameObject alloc] initWithWorld:world bodyDef:_arrowBodyDef fixtureDef:_arrowFixture];
+            arrowGuide = [[GameObject alloc] initWithBodyDef:_arrowBodyDef fixtureDef:_arrowFixture shape:polygonShape];
+            [arrowGuide create:world];
             arrowGuide->body->SetActive(false);
         }
         if([self bowAvailable:_vec]) {
@@ -1064,17 +1085,24 @@ public:
             _arrowBodyDef.position.Set(body->GetWorldCenter().x - dirNormal.x, body->GetWorldCenter().y - dirNormal.y);
             _arrowBodyDef.angle = angle;
             
-            b2PolygonShape _arrowShape;
-            _arrowShape.SetAsBox(0.5, 0.01);
+            b2Vec2 vec[4];
+            vec[0] = b2Vec2(-0.5, -0.01);
+            vec[1] = b2Vec2(0.5, -0.01);
+            vec[2] = b2Vec2(0.5, 0.01);
+            vec[3] = b2Vec2(-0.5, 0.01);
+            
+            b2PolygonShape* polygonShape = new b2PolygonShape;
+            polygonShape->Set(vec, 4);
             
             b2FixtureDef _arrowFixture;
-            _arrowFixture.shape = &_arrowShape;
+            _arrowFixture.shape = polygonShape;
             _arrowFixture.density = 1.0;
             _arrowFixture.restitution = 0.0;
             _arrowFixture.isSensor = false;
             _arrowFixture.friction = 1.0;
             
-            Arrow* arrow = [[Arrow alloc] initWithWorld:world bodyDef:_arrowBodyDef fixtureDef:_arrowFixture];
+            Arrow* arrow = [[Arrow alloc] initWithBodyDef:_arrowBodyDef fixtureDef:_arrowFixture shape:polygonShape];
+            [arrow create:world];
             arrow->type = BodyArrow;
             
             dirNormal = VBVector2DNormal(dir, length / 100.0);//활시위 파워

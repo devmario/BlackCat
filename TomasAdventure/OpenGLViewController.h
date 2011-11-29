@@ -8,7 +8,7 @@
 #import "TomasWorld.h"
 
 @interface OpenGLViewController : UIViewController <UIAccelerometerDelegate, UIAlertViewDelegate> {
-@private
+@public
     EAGLContext *context;
     
     BOOL animating;
@@ -17,12 +17,16 @@
     
     NSTimer* timer;
     
-    
     TomasData* tomasData;
+    LevelData* levelData;
     Scene* currentScene;
 }
 
 @property (readonly, nonatomic, getter=isAnimating) BOOL animating;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil tomasData:(TomasData*)_td levelData:(LevelData*)_ld;
+
+- (void)quickLoad;
 
 - (void)startAnimation;
 - (void)stopAnimation;

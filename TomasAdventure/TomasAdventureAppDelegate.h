@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@class OpenGLViewController;
+#import "StageSelectTableViewController.h"
 
 @interface TomasAdventureAppDelegate : NSObject <UIApplicationDelegate> {
-    OpenGLViewController *viewController;
+    UINavigationController* naviVC;
+    StageSelectTableViewController* stageSelectVC;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;

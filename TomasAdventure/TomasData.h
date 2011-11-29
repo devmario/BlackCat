@@ -16,4 +16,10 @@
 
 - (void)write;
 
+- (int)getStageFilePathCount;
+
+- (NSString*)getStageFilePath:(int)_stage;
+
+- (NSString*)getStageFileName:(int)_stage;
+
 @end

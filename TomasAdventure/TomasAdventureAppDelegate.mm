@@ -16,9 +16,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    viewController = [[OpenGLViewController alloc] initWithNibName:@"OpenGLViewController" bundle:[NSBundle mainBundle]];
+    
+    stageSelectVC = [[StageSelectTableViewController alloc] initWithNibName:@"StageSelectTableViewController" bundle:[NSBundle mainBundle]];
     // Override point for customization after application launch.
-    self.window.rootViewController = viewController;
+    naviVC = [[UINavigationController alloc] initWithRootViewController:stageSelectVC];
+    self.window.rootViewController = naviVC;
     return YES;
 }
 
@@ -28,7 +30,6 @@
      Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
      Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
      */
-    [viewController stopAnimation];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -51,7 +52,6 @@
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
-    [viewController startAnimation];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -61,13 +61,13 @@
      Save data if appropriate.
      See also applicationDidEnterBackground:.
      */
-    [viewController stopAnimation];
 }
 
 - (void)dealloc
 {
     [_window release];
-    [viewController release];
+    [stageSelectVC release];
+    [naviVC release];
     [super dealloc];
 }
 
